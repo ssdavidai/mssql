@@ -2,6 +2,7 @@
 
 [![PyPI](https://img.shields.io/pypi/v/microsoft_sql_server_mcp)](https://pypi.org/project/microsoft_sql_server_mcp/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![smithery badge](https://smithery.ai/badge/@ssdavidai/mssql-remote)](https://smithery.ai/server/@ssdavidai/mssql-remote)
 
 <a href="https://glama.ai/mcp/servers/29cpe19k30">
   <img width="380" height="200" src="https://glama.ai/mcp/servers/29cpe19k30/badge" alt="Microsoft SQL Server MCP server" />
@@ -18,6 +19,14 @@ A Model Context Protocol (MCP) server for secure SQL Server database access thro
 - 🔌 Custom port configuration
 
 ## Quick Start
+
+### Installing via Smithery
+
+To install mssql-remote for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@ssdavidai/mssql-remote):
+
+```bash
+npx -y @smithery/cli install @ssdavidai/mssql-remote --client claude
+```
 
 ### Install with Claude Desktop
 
