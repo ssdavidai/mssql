@@ -1,0 +1,48 @@
+# Smithery configuration file: https://smithery.ai/docs/build/project-config
+
+startCommand:
+  type: stdio
+  commandFunction:
+    # A JS function that produces the CLI command based on the given config to start the MCP on stdio.
+    |-
+    (config) => ({ command: 'python', args: ['-m', 'mssql_mcp_server'], env: { PYTHONPATH: 'src', MSSQL_SERVER: config.server, MSSQL_DATABASE: config.database, ...(config.windowsAuth ? { MSSQL_WINDOWS_AUTH: String(config.windowsAuth) } : { MSSQL_USER: config.user, MSSQL_PASSWORD: config.password }), ...(config.port !== undefined ? { MSSQL_PORT: String(config.port) } : {}), ...(config.encrypt !== undefined ? { MSSQL_ENCRYPT: String(config.encrypt) } : {}) } })
+  configSchema:
+    # JSON Schema defining the configuration options for the MCP.
+    type: object
+    required:
+      - server
+      - database
+    properties:
+      server:
+        type: string
+        description: SQL Server host or instance (e.g. localhost,
+          servername.database.windows.net)
+      database:
+        type: string
+        description: Database name
+      user:
+        type: string
+        description: SQL user name (required if windowsAuth is false)
+      password:
+        type: string
+        description: SQL user password (required if windowsAuth is false)
+      windowsAuth:
+        type: boolean
+        default: false
+        description: Use Windows Authentication
+      port:
+        type: number
+        default: 1433
+        description: Custom port for SQL Server
+      encrypt:
+        type: boolean
+        default: false
+        description: Enable encryption (true/false)
+  exampleConfig:
+    server: localhost
+    database: my_database
+    user: db_user
+    password: secret_password
+    windowsAuth: false
+    port: 1433
+    encrypt: false
