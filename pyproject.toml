@@ -20,6 +20,7 @@ classifiers = [
 dependencies = [
     "mcp>=1.0.0",
     "pymssql>=2.2.8",
+    "aiohttp>=3.9.0",
 ]
 
 [tool.mcp]
