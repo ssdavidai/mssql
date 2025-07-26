@@ -16,6 +16,3 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy project files
 COPY . .
-
-# Run the MCP server
-CMD ["python", "-m", "mssql_mcp_server"]
